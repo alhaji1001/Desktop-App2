@@ -1,0 +1,42 @@
+{
+  "name": "gdss-dutse-results",
+  "productName": "GDSS Dutse Results",
+  "version": "1.0.0",
+  "description": "Offline school results manager for GDSS Dutse (scores, results and report cards)",
+  "author": "GDSS Dutse",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test",
+    "sample-pdf": "node scripts/make-sample-pdf.js",
+    "dist": "electron-builder --win nsis --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.gdss.dutse.desktop",
+    "productName": "GDSS Dutse Results",
+    "copyright": "GDSS Dutse",
+    "directories": { "output": "release", "buildResources": "build" },
+    "files": ["electron/**/*", "src/**/*", "package.json"],
+    "asar": true,
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "GDSS Dutse Results",
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "GDSS-Dutse-Results-Setup-${version}.${ext}"
+    }
+  }
+}
